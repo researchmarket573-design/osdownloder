@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HYZR App Download</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --green-dark: #0f3d2e;
+  --green-main: #1f7a5c;
+  --green-light: #2fbf8f;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--green-dark);
+}
+
+.container {
+  width: 100%;
+  max-width: 420px;
+  padding: 26px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.subtext {
+  font-size: 13px;
+  color: #555;
+  margin-bottom: 26px;
+}
+
+/* STORE BUTTON */
+.store-link {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  height: 56px;
+  border-radius: 14px;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  color: #fff;
+  background: linear-gradient(135deg, var(--green-dark), var(--green-main), var(--green-light));
+  box-shadow: 0 8px 18px rgba(47,191,143,0.35);
+}
+
+.store-link:active {
+  transform: scale(0.97);
+}
+
+.footer {
+  margin-top: 28px;
+  font-size: 13px;
+  color: #777;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h1>Install the HYZR App</h1>
+  <div class="subtext">
+    Your device is detected automatically.
+  </div>
+
+  <!-- iOS -->
+  <a id="iosBtn" class="store-link"
+     href="https://apps.apple.com/in/app/hyzr/id6740561889">
+     Download on the App Store
+  </a>
+
+  <!-- Android -->
+  <a id="androidBtn" class="store-link"
+     href="https://play.google.com/store/apps/details?id=com.hyzr.hyzr.app">
+     Get it on Google Play
+  </a>
+
+  <!-- Fallback -->
+  <a id="otherBtn" class="store-link"
+     href="https://play.google.com/store/apps/details?id=com.hyzr.hyzr.app">
+     Download HYZR App
+  </a>
+
+  <div class="footer">
+    Hyzr | Beyond Mobility
+  </div>
+</div>
+
+<script>
+(function detectOS() {
+  const ua = navigator.userAgent || navigator.vendor || window.opera;
+
+  if (/android/i.test(ua)) {
+    document.getElementById('androidBtn').style.display = 'flex';
+  } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
+    document.getElementById('iosBtn').style.display = 'flex';
+  } else {
+    document.getElementById('otherBtn').style.display = 'flex';
+  }
+})();
+</script>
+
+</body>
+</html>
