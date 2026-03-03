@@ -5,6 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>HYZR App Download</title>
 
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+
+fbq('init', '1242949114571259');
+fbq('track', 'PageView');
+</script>
+
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
@@ -48,7 +63,6 @@ h1 {
   margin-bottom: 26px;
 }
 
-/* STORE BUTTON */
 .store-link {
   display: none;
   align-items: center;
@@ -61,6 +75,7 @@ h1 {
   color: #fff;
   background: linear-gradient(135deg, var(--green-dark), var(--green-main), var(--green-light));
   box-shadow: 0 8px 18px rgba(47,191,143,0.35);
+  transition: 0.2s ease;
 }
 
 .store-link:active {
@@ -85,19 +100,22 @@ h1 {
 
   <!-- iOS -->
   <a id="iosBtn" class="store-link"
-     href="https://apps.apple.com/in/app/hyzr/id6740561889">
+     href="https://apps.apple.com/in/app/hyzr/id6740561889"
+     onclick="trackAndRedirect(event, this.href)">
      Download on the App Store
   </a>
 
   <!-- Android -->
   <a id="androidBtn" class="store-link"
-     href="https://play.google.com/store/apps/details?id=com.hyzr.hyzr.app">
+     href="https://play.google.com/store/apps/details?id=com.hyzr.hyzr.app"
+     onclick="trackAndRedirect(event, this.href)">
      Get it on Google Play
   </a>
 
   <!-- Fallback -->
   <a id="otherBtn" class="store-link"
-     href="https://play.google.com/store/apps/details?id=com.hyzr.hyzr.app">
+     href="https://play.google.com/store/apps/details?id=com.hyzr.hyzr.app"
+     onclick="trackAndRedirect(event, this.href)">
      Download HYZR App
   </a>
 
@@ -118,6 +136,17 @@ h1 {
     document.getElementById('otherBtn').style.display = 'flex';
   }
 })();
+
+function trackAndRedirect(event, url) {
+  event.preventDefault();
+
+  // Track StoreClick event
+  fbq('trackCustom', 'StoreClick');
+
+  setTimeout(function() {
+    window.location.href = url;
+  }, 500); // small delay for event firing
+}
 </script>
 
 </body>
